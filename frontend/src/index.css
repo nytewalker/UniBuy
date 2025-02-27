@@ -16,3 +16,22 @@
 .Sell{
   border-radius: 5px;
 }
+
+.DialogContent {
+  height: calc(100vh - 358px);
+  overflow-y: auto;
+}
+
+
+@layer base {}
+
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    }
+  body {
+    @apply bg-background text-foreground;
+    }
+}
