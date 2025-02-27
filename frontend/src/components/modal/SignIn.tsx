@@ -22,9 +22,9 @@ export function SignInModal() {
           Sign In
         </button>
       </DialogTrigger>
-      <DialogContent className="bg-white w-[920px] h-[920px] mt-[358px] fixed top-0 left-1/2 -translate-x-1/2">
+      <DialogContent className="bg-white w-[920px] h-[550px] mt-[50vh] fixed top-0 left-1/2 -translate-x-1/2">
         <DialogHeader>
-          <DialogTitle className="text-3xl font-bold text-center mb-6">Login</DialogTitle>
+          <DialogTitle className="text-3xl font-bold ml-7 mb-6">Login</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4 w-[400px] mx-auto">
           <div className="space-y-2">
@@ -51,14 +51,14 @@ export function SignInModal() {
               className="h-12"
             />
             <div className="flex justify-end">
-              <a href="#" className="text-sm text-[#df8714] hover:underline">
+              <a href="#" className="text-sm text-[#f13e31fc] hover:underline">
                 Forgot password?
               </a>
             </div>
           </div>
           <Button 
             type="submit" 
-            className="w-full bg-[#2aa41a] hover:bg-[#238916] h-12 text-lg font-semibold mt-6"
+            className="w-full bg-[#2aa41a] hover:bg-[#238916] h-12 text-lg font-semibold mt-6 text-white"
           >
             Login
           </Button>
