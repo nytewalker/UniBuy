@@ -3,7 +3,7 @@ export default function Advert () {
         <section className=" mt-8 mb-7 w-full max-w-[1512px] h-[400px] md:h-[600px] lg:h-[824px] mx-auto">
             <div className="relative w-full h-full animate-fadeIn">
                 {/* Background image - lowest z-index */}
-                <div className="absolute inset-0 bg-[url('./src/assets/ads.png')] bg-cover bg-center bg-no-repeat z-0" />
+                <div className="absolute inset-0 bg-[url('./src/assets/ads.jpg')] bg-cover bg-center bg-no-repeat z-0" />
                 
                 {/* Dark overlay - middle z-index */}
                 <div className="absolute inset-0 bg-black/30 z-10" />
