@@ -2,14 +2,18 @@ import logo from '../assets/logo.png'
 import { SignInModal } from './modal/SignIn'
 import { Link, useLocation } from 'react-router-dom'
 import { Search } from 'lucide-react'
+import profile from '../assets/profile.png'
 
 function Header() {
   const location = useLocation()
+  const isUserPage = location.pathname === '/userpage'
   const isRegisterPage = location.pathname === '/register'
+  const isProductPage = location.pathname === '/Product'
+  const showSearchBar = isRegisterPage || isProductPage
 
   return (
     <header className={`bg-[#56066a] h-[100px] p-10 flex flex-row justify-between items-center
-      ${isRegisterPage ? 'shadow-custom' : ''}`}>
+      ${showSearchBar ? 'shadow-lg' : ''}`}>
       <div className="ml-10">
         <Link to="/">
           <img 
@@ -20,7 +24,7 @@ function Header() {
         </Link>
       </div>
 
-      {isRegisterPage && (
+      {showSearchBar && (
         <div className="flex-1 max-w-2xl mx-8">
           <div className="relative">
             <input
@@ -33,25 +37,35 @@ function Header() {
         </div>
       )}
 
-      <div className="mr-10 flex flex-row items-center gap-3">
-        <nav className="text-white flex flex-row items-center">
-          <ul className="flex flex-row items-center gap-3 font-bold text-[18px]">
-            <li><SignInModal /></li>
-            <span className="pointer-events-none select-none cursor-not-allowed">|</span>
-            <li>
-              <Link 
-                to="/register" 
-                className="hover:text-[#df8714] ease-in-out duration-200"
-              >
-                Register
-              </Link>
-            </li>
-          </ul>
-        </nav>
-        <button className="bg-[#df8714] text-white px-12 py-2 border-0 Sell ml-5 hover:bg-[#f18933] transition-colors duration-200">
-            <a href="#" className="text-[18px]">SELL</a>
-        </button>
-      </div>
+      {isUserPage ? (
+        <div className="mr-10">
+          <img 
+            src={profile} 
+            alt="Profile" 
+            className="h-[50px] w-[50px] cursor-pointer hover:opacity-90 transition-opacity duration-200"
+          />
+        </div>
+      ) : !isUserPage && (
+        <div className="mr-10 flex flex-row items-center gap-3">
+          <nav className="text-white flex flex-row items-center">
+            <ul className="flex flex-row items-center gap-3 font-bold text-[18px]">
+              <li><SignInModal /></li>
+              <span className="pointer-events-none select-none cursor-not-allowed">|</span>
+              <li>
+                <Link 
+                  to="/register" 
+                  className="hover:text-[#df8714] ease-in-out duration-200"
+                >
+                  Register
+                </Link>
+              </li>
+            </ul>
+          </nav>
+          <button className="bg-[#df8714] text-white px-12 py-2 border-0 Sell ml-5 hover:bg-[#f18933] transition-colors duration-200">
+            <Link to="#" className="text-[18px]">SELL</Link>
+          </button>
+        </div>
+      )}
     </header>
   )
 }

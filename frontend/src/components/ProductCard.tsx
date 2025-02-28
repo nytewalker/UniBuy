@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 interface ProductCardProps {
   name: string;
   price: number;
@@ -43,24 +45,35 @@ const products = [
 }
 ];
 
-function ProductCard({ name, price, image }: ProductCardProps) {
+function ProductCard({ image, price, name }: ProductCardProps) {
+  // Format price to Naira
+  const formattedPrice = new Intl.NumberFormat('en-NG', {
+    style: 'currency',
+    currency: 'NGN',
+    minimumFractionDigits: 0
+  }).format(price)
+
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl w-[306px] h-[368px]">
-      <div className="w-[306px] h-[262px]">
-        <img
-          src={image}
-          alt={name}
-          className="w-full h-full object-cover"
-        />
+    <Link 
+      to="/Product" 
+      state={{ image, price, name }}
+      className="block hover:opacity-95 transition-opacity"
+    >
+      <div className="bg-white rounded-lg shadow-md overflow-hidden">
+        <div className="relative h-[200px]">
+          <img
+            src={image}
+            alt={name}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="p-4">
+          <h3 className="text-lg font-semibold text-gray-800 mb-2">{name}</h3>
+          <p className="text-xl font-bold text-[#111111]">{formattedPrice}</p>
+        </div>
       </div>
-      <div className="p-4">
-        <h3 className="text-lg font-semibold text-gray-800 mb-2 truncate">{name}</h3>
-        <p className="text-[#0f0f0f] font-bold">
-          ₦{price.toLocaleString()}
-        </p>
-      </div>
-    </div>
-  );
+    </Link>
+  )
 }
 
 function ProductGrid() {
@@ -77,7 +90,7 @@ function ProductGrid() {
         ))}
       </div>
     </div>
-  );
+  )
 }
 
-export default ProductGrid;
+export default ProductGrid
