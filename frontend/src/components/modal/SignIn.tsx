@@ -5,8 +5,13 @@ import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Facebook } from 'lucide-react'
 import { FcGoogle } from 'react-icons/fc'
+import { Link } from 'react-router-dom'
 
-export function SignInModal() {
+interface SignInModalProps {
+  isRegisterPage?: boolean;
+}
+
+export function SignInModal({ isRegisterPage = false }: SignInModalProps) {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
@@ -18,11 +23,17 @@ export function SignInModal() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button className="text-white hover:text-[#df8714] ease-in-out duration-200 font-bold text-[18px]">
-          Sign In
-        </button>
+        {isRegisterPage ? (
+          <button className="px-16 py-3 bg-[#e7e7e7] text-[#56066a] border-2 border-[#56066a] rounded-md font-semibold hover:bg-[#56066a] hover:text-white transition-colors duration-200">
+            Login
+          </button>
+        ) : (
+          <button className="text-white hover:text-[#df8714] ease-in-out duration-200 font-bold text-[18px]">
+            Sign In
+          </button>
+        )}
       </DialogTrigger>
-      <DialogContent className="bg-white w-[920px] h-[550px] mt-[50vh] fixed top-0 left-1/2 -translate-x-1/2">
+      <DialogContent className="bg-white w-[920px] h-[550px] mt-[5vh] fixed tp-0 left-1/2 -translate-x-1/2">
         <DialogHeader>
           <DialogTitle className="text-3xl font-bold ml-7 mb-6">Login</DialogTitle>
         </DialogHeader>
@@ -101,9 +112,12 @@ export function SignInModal() {
         <div className="text-center mt-6">
           <span className="text-sm text-gray-600">
             Don't have an account?{' '}
-            <a href="#" className="text-[#df8714] hover:underline font-semibold">
+            <Link 
+              to="/register" 
+              className="text-[#df8714] hover:underline font-semibold"
+            >
               Register
-            </a>
+            </Link>
           </span>
         </div>
       </DialogContent>

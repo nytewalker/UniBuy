@@ -87,6 +87,9 @@ module.exports = {
         slideUp: 'slideUp 0.8s ease-out',
         slideInLeft: 'slideInLeft 0.8s ease-out',
       },
+      boxShadow: {
+        'custom': '0 4px 6px -1px rgba(0, 0, 0, 0.2)',
+      },
     }
   },
   plugins: [require("tailwindcss-animate")],
