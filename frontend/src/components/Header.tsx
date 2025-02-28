@@ -61,7 +61,7 @@ function Header() {
               </li>
             </ul>
           </nav>
-          <button className="bg-[#df8714] text-white px-12 py-2 border-0 Sell ml-5 hover:bg-[#f18933] transition-colors duration-200">
+          <button className="bg-[#ffa500] text-white px-12 py-2 border-0 Sell ml-5 hover:bg-[#f18933] transition-colors duration-200">
             <Link to="#" className="text-[18px]">SELL</Link>
           </button>
         </div>

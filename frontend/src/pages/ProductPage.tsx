@@ -47,7 +47,7 @@ function ProductPage() {
   }).format(price)
 
   return (
-    <div className="min-h-screen bg-gray-200">
+    <div className="min-h-screen bg-[#ebebeb]">
       <Header/>
 
       <div className="max-w-[1720px] mt-[30px] mx-auto px-8 py-6">
