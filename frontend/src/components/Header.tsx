@@ -9,7 +9,8 @@ function Header() {
   const isUserPage = location.pathname === '/userpage'
   const isRegisterPage = location.pathname === '/register'
   const isProductPage = location.pathname === '/Product'
-  const showSearchBar = isRegisterPage || isProductPage
+  const isSellerPage = location.pathname === '/sellerpage'
+  const showSearchBar = isRegisterPage || isProductPage || isSellerPage
 
   return (
     <header className={`bg-[#56066a] h-[100px] p-10 flex flex-row justify-between items-center
@@ -37,15 +38,23 @@ function Header() {
         </div>
       )}
 
-      {isUserPage ? (
+      {isSellerPage ? (
         <div className="mr-10">
-          <img 
-            src={profile} 
-            alt="Profile" 
-            className="h-[50px] w-[50px] cursor-pointer hover:opacity-90 transition-opacity duration-200"
-          />
+          <button className="bg-[#ffa500] text-white px-12 py-2 border-0 text-[18px] hover:bg-[#f18933] transition-colors duration-200">
+            SELL
+          </button>
         </div>
-      ) : !isUserPage && (
+      ) : isUserPage ? (
+        <div className="mr-10">
+          <Link to="/sellerpage">
+            <img 
+              src={profile} 
+              alt="Profile" 
+              className="h-[50px] w-[50px] cursor-pointer hover:opacity-90 transition-opacity duration-200"
+            />
+          </Link>
+        </div>
+      ) : !isUserPage && !isSellerPage && (
         <div className="mr-10 flex flex-row items-center gap-3">
           <nav className="text-white flex flex-row items-center">
             <ul className="flex flex-row items-center gap-3 font-bold text-[18px]">

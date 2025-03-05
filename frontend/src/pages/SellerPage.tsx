@@ -1,8 +1,14 @@
+import Header from '@/components/Header';
+
+
+
 function SellerPage () {
     return (
-        <div>
-            <h1>Seller Page</h1>
-        </div>
+       <div>
+            <Header />
+            <h1> Seller Page</h1>
+       </div>
+        
     )
 }
 
